@@ -49,4 +49,31 @@ def longestPalindromicSubstring(string):
     return ans_string
 
 
+## Basic Solution O(n^3)
+
+def isPalindrome(string):
+    #solution Abhinav basic
+    l,r=0,len(string)-1
+    while(l<=r):
+        if string[l]==string[r]:
+            l+=1
+            r-=1
+
+        else:
+            return False
+    return True
+
+def longestPalindromicSubstring(string):
+    # Write your code here.
+    m,n=len(string),len(string)
+
+    if n==1:
+        return string
+    while(n>0):
+        for k in range(m-n+1):
+            l,r=k,k+n
+            if isPalindrome(string[l:r]):
+                return string[l:r]
+        n-=1
+    
 
